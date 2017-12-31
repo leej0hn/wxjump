@@ -1,0 +1,14 @@
+spring.application.name: wxjump
+
+logging:
+  file: ${user.home}/logs/wxjump.log
+
+wxjump:
+ adbPath: F:\Android\sdk\platform-tools\adb.exe
+ screenshotLocation: D:\s.png
+ screenWidth: 1080
+ screenHeight: 1920
+ distancePressTimeRatio: 1.45f
+ screenshotInterval: 1000
+ model: 2
+ ## 1 手动模式，2 自动模式，3 半自半模式
