@@ -8,7 +8,7 @@ wxjump:
  screenshotLocation: D:\s.png
  screenWidth: 1080
  screenHeight: 1920
- distancePressTimeRatio: 1.45f
+ distancePressTimeRatio: 1.448f
  screenshotInterval: 1000
  model: 2
  ## 1 手动模式，2 自动模式，3 半自半模式
