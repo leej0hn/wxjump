@@ -2,6 +2,7 @@ package com.redscraf.wxjump.service.adb;
 
 import com.google.common.base.Throwables;
 import com.redscraf.wxjump.service.config.WxJumpConfig;
+import com.redscraf.wxjump.utils.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 @Slf4j
 @Component
@@ -24,8 +26,15 @@ public class AdbCaller {
 	 */
 	public void longPress(double timeMilli) {
 		try {
+			//应该生成随机的 swipe 点
+			int x = RandomUtil.random(wxJumpConfig.getScreenWidth());
+			int y = RandomUtil.random(wxJumpConfig.getScreenHeight());
+			String command = wxJumpConfig.getAdbPath()
+					+ " shell input touchscreen swipe " + x + " " + x + " " + y + " " + y + " "
+					+ (int) timeMilli;
+			log.info("command : " + command);
 			Process process = Runtime.getRuntime()
-					.exec(wxJumpConfig.getAdbPath() + " shell input touchscreen swipe 200 200 180 180 " + (int) timeMilli);
+					.exec(command);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 			String s;
 			while ((s = bufferedReader.readLine()) != null) {
