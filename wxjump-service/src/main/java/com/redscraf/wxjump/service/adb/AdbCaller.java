@@ -32,7 +32,6 @@ public class AdbCaller {
 			String command = wxJumpConfig.getAdbPath()
 					+ " shell input touchscreen swipe " + x + " " + x + " " + y + " " + y + " "
 					+ (int) timeMilli;
-			log.info("command : " + command);
 			Process process = Runtime.getRuntime()
 					.exec(command);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
